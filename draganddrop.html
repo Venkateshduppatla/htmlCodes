@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drop annd Drag</title>
+	<style>
+		div
+		{
+			width: 50px;
+			height: 50px;
+			padding: 10px;
+			border: 1px solid;
+		}
+	</style>
+	<script>
+		function allowDrop(event)
+		{
+			event.preventDefault();
+		}
+
+		function drag(event)
+		{
+			event.dataTransfer.setData("text", event.target.id+"|"+event.target.parentNode.id);
+		}
+
+		function drop(event)
+		{
+			event.preventDefault();
+			var data = event.dataTransfer.getData("text");
+			// ev.target.appendChild(document.getElementById(data));
+            dropItems = data.split("|"); 
+            var temp = document.getElementById(event.target.id);
+            event.target.parentNode.appendChild(document.getElementById(dropItems[0]));
+            document.getElementById(dropItems[1]).appendChild(temp);
+
+		}
+		</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load" src="loading.gif" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load1" src="download.jpg" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load2" src="download1.jpg" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load3" src="download2.jpg" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load4" src="download3.jpg" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="load5" src="images.jpg" draggable="true" ondragstart="drag(event)" width="40px" height="40px">
+</div>
+
+</body>
+</html>
+
+ <!--  function dragWord(dragEvent){
+                  dragEvent.dataTransfer.setData("Id",    dragEvent.target.id+"|"+dragEvent.target.parentNode.id);
+                  document.getElementById("box6").innerHTML = dragEvent.target.id;
+                 }      -->              
+
+
+ <!-- function dropWord(dropEvent){ 
+                dropEvent.preventDefault(); 
+                var dropData = dropEvent.dataTransfer.getData("Id");
+                dropItems = dropData.split("|"); 
+                var temp = document.getElementById(dropEvent.target.id);
+                dropEvent.target.parentNode.appendChild(document.getElementById(dropItems[0]));
+                document.getElementById(dropItems[1]).appendChild(temp);
+                }  -->
+
+
+
+<!-- <!DOCTYPE HTML>
+<html>
+<head>
+<style>
+div {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div><br>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div><br>
+<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div><br>
+<br>
+<img id="drag1" src="loading.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+</body>
+</html>
+ -->

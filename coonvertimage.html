@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grey Image</title>
+	<style>
+		#div1, #div2
+		{
+			height: 200px;
+			width: 200px;
+			padding: 50px;
+			border: 5px solid;
+			float: left;
+			margin-left: 100px;
+		}
+		img
+		{
+			height: 200px;
+			width: 200px;
+		}
+	</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$("#uploadButton").click(function()
+			{
+			    // var name = $('#uploadFile'); 
+				var file_data = $("#uploadFile").prop("files")[0];
+				// $("#div1").html(name.files.item(0).name);
+				var form_data = new FormData(); 
+				form_data.append("uploadFile", file_data)
+				form_data.append("uploadButton", "uploadButton")
+				$.ajax({
+			    url: "convertimage.php", // Upload Script
+			    dataType: 'script',
+			    cache: false,
+			    contentType: false,
+			    processData: false,
+			    data: form_data, // Setting the data attribute of ajax with file_data
+			    type: 'post', 
+			    success: function(data)
+			    {
+    				$("#div1").html(data);
+			    }
+				// $("#div1").load("upload.php?")
+				})
+
+				$("#convertButton").click(function()
+				{
+			    // var name = $('#uploadFile'); 
+				var file_data = $("#uploadFile").prop("files")[0];
+				// $("#div1").html(name.files.item(0).name);
+				var form_data = new FormData(); 
+				form_data.append("uploadFile", file_data)
+				form_data.append("convertButton", "convertButton")
+				$.ajax({
+			    url: "convertimage.php", // Upload Script
+			    dataType: 'script',
+			    cache: false,
+			    contentType: false,
+			    processData: false,
+			    data: form_data, // Setting the data attribute of ajax with file_data
+			    type: 'post', 
+			    success: function(data)
+			    {
+    				$("#div2").html(data);
+			    }
+
+				// $("#div1").load("upload.php?")
+				})
+			})
+		})
+		})
+	</script>
+</head>
+<body style="background-color: lightgrey">
+	<div id="div1"></div>
+	<div id="div2"></div><br>
+	Choose a file to upload: <input type="file" name="files[]" id="uploadFile"/>
+	<!-- <input type="hidden" name="MAX_FILE_SIZE" id="uploadFile" value="10000000" /> -->
+	 <!-- <input name="uploadedfile" type="file" /><br> -->
+	<br><button name="uploadButton" id="uploadButton">Upload</button>
+	<button name="convertButton" id="convertButton">Convert</button>
+</body>
+</html>

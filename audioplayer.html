@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Audio Player</title>
+</head>
+<body>
+	<audio src="" controls="" autoplay id="audioPlayer"></audio>
+	<ul id="playList">
+		<li><a href="audio.mp3">Audio</a></li>
+		<li><a href="audio1.mp3">Audio-1</a></li>
+	</ul>
+	<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+	<script type="text/javascript">
+		
+		audioPlayer();
+		function list()
+		{
+			var fs = require('fs');
+			var files = fs.readdirsyn('D:/training/html');
+		}
+		
+		function audioPlayer()
+		{
+			$("#audioPlayer")[0].src = $("#playList li a")[0];
+			$("#audioPlayer")[0].play();
+			$("#playList li a").click(function(e)
+			{
+				e.preventDefault();
+				$("#audioPlayer")[0].src = this;
+			});
+		}
+	</script>
+	<ul id="songsList"></ul>
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+<html>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() 
+		{
+			// $("#getDataButton").click(function()
+			$("#dataId").keyup(function()
+			{
+				const xhttp = new XMLHttpRequest();
+				xhttp.onload = function() 
+				{
+			    	$("#outputData").html(this.responseText);
+				}
+				let url = "mysqlconnect.php?itemId="+ $("input").val();
+				xhttp.open("GET", url);
+				xhttp.send();
+
+			});
+			});
+	</script>
+	<input type="text" name="dataId" id="dataId">
+	<button id="getDataButton">Get Data</button>
+	<table id="outputData"></table>
+</body>
+
+</html>
+
+
+<!-- <html>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+
+		$(document).ready(function() 
+		{
+			$("button").click(function()
+			{
+			    $.get("mysqlconnect.php?itemId="+ $("#dataId").val(), function(data)
+			    {
+			    	$("#outputData").html(data);
+			    });
+				
+
+			});
+			});
+	</script>
+	<input type="text" name="dataId" id="dataId">
+	<button id="getDataButton">Get Data</button>
+	<p id="outputData"></p>
+</body>
+
+</html>
+ -->
+
+
+<!-- 
+<html>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() 
+		{
+			$("button").click(function()
+			{
+			let url1 = "mysqlconnect.php?itemId="+ $("#dataId").val();
+				$.ajax({url: url1, success: function(result)
+				{
+				    $("#outputData").html(result);
+				}});
+
+			});
+			});
+	</script>
+	<input type="text" name="dataId" id="dataId">
+	<button id="getDataButton">Get Data</button>
+	<p id="outputData"></p>
+</body>
+
+</html> -->

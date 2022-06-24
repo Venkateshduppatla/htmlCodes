@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My IDE</title>
+	<style type="text/css">
+		div
+		{
+			float: left;
+			width: 30%;
+			height: 600px;
+			padding: 10px;
+			border: 2px solid;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(event)
+		{
+			event.preventDefault();
+		}
+
+		function drag(event)
+		{
+			event.dataTransfer.setData("id", event.target.id);
+		}
+
+		function drop(event)
+		{
+			event.preventDefault();
+			var data = event.dataTransfer.getData("id");
+			var elementCopy = document.getElementById(data).childNodes[1];
+			var clone = elementCopy.cloneNode(true);
+	        event.target.appendChild(clone);
+	        document.getElementById("codePage").innerText = document.getElementById("dropPage").innerHTML
+
+		}
+	</script>
+</head>
+<body>
+	<div id="dragPage">
+		<button id="button" draggable="true" ondragstart="drag(event)">Button</button>
+		<input type="text" name="textBox" draggable="true" ondragstart="drag(event)" placeholder="Text Box">
+	</div>
+	<div id="dropPage" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+	<div id="codePage"></div>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		#div1,#div2,#div3{
+			float: left;
+			width: 31%;
+			padding: 10px;
+			height: 600px;
+			border: 3px solid;
+		}
+		#webPageDiv{
+			width: 100%;
+			height: 500px;
+			border: 1px dotted;
+		}
+		#codeDiv{
+			width: 100%;
+			height: 490px;
+			border: 1px dotted;
+		}
+	</style>
+	<script type="text/javascript">
+
+    function drag(eve)
+    {
+        eve.dataTransfer.setData("id", eve.target.id);
+    }
+    function drop(ev)
+    {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("id");
+		var nodeCopy = document.getElementById(data).childNodes[1];
+		var clone = nodeCopy.cloneNode(true);
+        ev.target.appendChild(clone);
+        document.getElementById("codeDiv").innerText = document.getElementById("webPageDiv").innerHTML
+    }
+
+    function downloadFile(filename) {
+    	var content = document.getElementById("codeDiv").innerText;
+		const element = document.createElement('temp');
+		const blob = new Blob([content], { type: 'plain/text' });
+		const fileUrl = URL.createObjectURL(blob);
+		element.setAttribute('href', fileUrl);
+		element.setAttribute('download', filename);
+		element.style.display = 'none';
+  
+		document.body.appendChild(element);
+		element.click();
+  
+		document.body.removeChild(element);
+};
+  </script>
+	<title>IDE</title>
+</head>
+<body>
+<div id="div1">
+	<div>
+	<h1 id="hello">Icons</h1>
+	</div>
+	<div id="buttonDiv" draggable="true" ondragstart="drag(event)">
+	<button>Button</button><br>
+	</div>
+	<div draggable="true" ondragstart="drag(event)" id="textBoxDiv">
+	<input type="text" placeholder="Text Box">
+	</div>
+
+</div>
+<div id="div2">
+	<div><h1>WedPage</h1></div>
+	<div id="webPageDiv" ondragover="event.preventDefault()" ondrop="drop(event)">
+</div>
+</div>
+
+<div id="div3">
+	<div>
+	<h1>HTML Code</h1>
+	</div>
+	<div id="codeDiv"></div>
+	<div id="downloadFormDiv">
+		<input type="text" id="filename">
+		<button onclick="downloadFile(document.getElementById('filename').value)">Download</button>
+	</div>
+</div>
+</body>
+</html> -->

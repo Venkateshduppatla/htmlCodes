@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Axis Bank Customers</title>
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function() 
+		{
+			$('#insertUI').hide();
+			$('#insert').click(function()
+			{
+				$('#insertUI').show();
+			});
+			$('#update').click(function()
+			{
+				$('#insertUI').show();
+			})
+			$("#saveButton").click(function()
+			{
+				$("#outputData").load("cruds.php?accountNumber="+$("#accountNumber").val()+"&name="+$("#name").val()+"&balance="+$("#balance").val()+"&saveButton=saveButton");
+				$('#insertUI').hide();
+			});
+			$("#displayButton").click(function()
+                {
+                    $("#outputData").load("cruds.php?displayButton=displayButton");
+                });
+			$("#searchButton").click(function()
+			{
+				$("#outputData").load("cruds.php?accountNumber="+$("#accountNumber").val()+"&searchButton=searchButton");
+			});
+			$("#deleteButton").click(function()
+			{
+				$("#outputData").load("cruds.php?accountNumber="+$("#accountNumber").val()+"&deleteButton=deleteButton");
+			});
+		});
+	</script>
+	<!-- <input type="text" name="accountNumber" id="accountNumber"> -->
+	<button id="insert">INSERT</button>
+	<button id="update"><span class="glyphicon glyphicon-pencil"></span> UPDATE</button><br>
+	<div id="insertUI">
+		<input type="text" name="accountNumber", placeholder="Account Number" id="accountNumber">
+		<input type="text" name="name" placeholder="Customer Name" id="name">
+		<input type="text" name="balance" placeholder="Balance" id="balance">
+		<button id="saveButton"><span class="glyphicon glyphicon-save">SAVE</span></button>
+	</div>
+
+	<button id="displayButton">DISPLAY ALL RECORDS</button><br>
+	<input type="text" name="Account Number" placeholder="Account Number" id="accountNumber">
+	<button id="searchButton"><span class="glyphicon glyphicon-search"></span></button>
+	<button id="deleteButton"><span class="glyphicon glyphicon-trash"></span> DELETE</button>
+	<div id="outputData"></div>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Axis Bank Customers</title>
+</head>
+<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+
+                $(document).ready(function()
+                {
+                        // $("#getDataButton").click(function()
+                        $("#searchButton").click(function()
+                        {
+                                $("#outputData").load("cruds.php");
+                        });
+                        });
+        </script>
+        <input type="text" name="accountNumber" id="accountNumber">
+        <button id="searchButton">SEARCH</button>
+        <table id="outputData"></table>
+</body>
+</html>
+ -->

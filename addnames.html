@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Add Names</title>
+</head>
+<body>
+	<input type="text" name="names" id="peopleNames">
+	<script type="text/javascript">
+		document.cookie = "username=; expires=Mon, 30"
+		let addButton = document.createElement("button");
+		addButton.innerHTML= "ADD";
+		addButton.onclick = function()
+		{
+			
+			document.getElementById('peopleNames').value = "";
+		};
+		document.body.appendChild(addButton);
+		function setCookie()
+		{
+			var cookieString = ("name" + document.getElementById('peopleNames').value + ";");
+			document.cookie = cookieString;
+		}
+		function getCookie()
+		{
+			alert(document.cookie);
+		}
+	</script>
+	<table id = "namesTable">
+		<th>Person Names</th>
+		<tbody id = 'result'>
+			<script type="text/javascript">
+				document.getElementById('result').innerHTML += localStorage.addItem;
+			</script>
+		</tbody>
+	</table>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Names</title>
+</head>
+<body>
+	<input type="text" name="names" id="peopleNames">
+	<script type="text/javascript">
+		let addButton = document.createElement("button");
+		addButton.innerHTML= "ADD";
+		addButton.onclick = function()
+		{
+			var name = document.getElementById('peopleNames').value;
+			var html = "";
+			html = "<tr><td>"+name+"</td></tr>";
+			document.getElementById('namesTable').innerHTML+= html;
+			document.cookie += html;
+			document.getElementById('peopleNames').value = "";
+		};
+		document.body.appendChild(addButton);
+	</script>
+	<div id = "Hello"></div>
+	<table id = "namesTable">
+		<th>Person Names</th>
+		<tbody id = 'result'>
+			<script type="text/javascript">
+				document.getElementById('result').innerHTML += document.cookie;
+			</script>
+		</tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Add Names</title>
+</head>
+<body>
+	<input type="text" name="names" id="peopleNames">
+	<script type="text/javascript">
+		let addButton = document.createElement("button");
+		addButton.innerHTML= "ADD";
+		addButton.onclick = function()
+		{
+			var names = document.getElementById('peopleNames').value;
+			var html = "";
+			html = "<tr><td>"+names+"</td></tr>";
+			document.getElementById('namesTable').innerHTML+= html;
+			var namesData = document.getElementById('peopleNames').value;
+			
+
+			document.getElementById('peopleNames').value = "";
+		};
+		document.body.appendChild(addButton);
+		// function addedNames()
+		// {
+		// 	sessionStorage.setItem("namesAdded", "html");
+		// 	document.getElementById("peopleNames").innerHTML = sessionStorage.getItem("autosave");
+		// }
+	</script>
+	 <ul id = "list"></ul> -->
+	<!-- <table id = "namesTable">
+		<th>Person Names</th>
+	</table>
+</body>
+</html> -->
+
+
+<!-- 
+// var namesList = "<li>" + namesData + "</li>";
+			// const storedData = [];
+			// storedData.push(namesList); -->

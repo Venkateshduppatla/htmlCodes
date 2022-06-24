@@ -1,0 +1,50 @@
+<!-- Print Temp with load image -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function getTemperature()
+		{
+			var city = document.getElementById('city').value;
+			let url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=e6b7427f8bf97526adf2869093c7509c&units=metric";
+			let xmlHttpReq = new XMLHttpRequest();
+			var img = document.createElement("img");
+		    img.src = "loading.gif";
+			xmlHttpReq.onload = function() 
+			{
+				$("#output").html(img);
+				var json = JSON.parse(xmlHttpReq.responseText);
+				var main = json.main;
+				var temp = main.temp;
+				$("#output").html("The Temperature at " + city + " is " + temp + ".");
+			}
+			xmlHttpReq.open("GET", url);
+			xmlHttpReq.send();
+		};
+	</script>
+</head>
+<body>
+	<p>Enter City Name:</p>
+	<input type="text" name="city" id="city">
+	<script type="text/javascript">
+	</script>
+	<button onclick="getTemperature()">Get Temperature</button>
+	<p id="output"></p>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature of a City</title>
+</head>
+<body>
+	Enter the City Name:
+	<input type="text" name="City" id="city">
+	<button id="getTemperature">Get Temperature</button>
+</body>
+</html> -->
